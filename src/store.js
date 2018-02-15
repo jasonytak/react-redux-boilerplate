@@ -10,6 +10,6 @@ const store = createStore(
   composeEnhancers(applyMiddleware()),
 );
 
-// Compose - return values will be provided as arguments to functions to the left
+// Compose - return values from functions will be provided as arguments to functions to the left
 
 export default store;
