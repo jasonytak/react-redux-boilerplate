@@ -3,39 +3,44 @@ const webpack = require('webpack');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    './src/index.js'
+    './src/index.jsx',
   ],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
-      }
-    ]
+        use: ['babel-loader', 'eslint-loader'],
+      },
+    ],
   },
   // Automically resolve certain extensions so no need to type extensions in import statements
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   // Use entry file as entry point to bundle all imported files
   output: {
-    path: __dirname + '/dist',
+    path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
+  devtool: 'inline-source-map',
+  // Choose style of source mapping for debugging purposes
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // Enable Hot Module Replacement
+    new webpack.NamedModulesPlugin(),
+    // Correctly show module names
   ],
   // The bundled files will result in 'bundle.js' which will be generated in dist
   devServer: {
     contentBase: './dist',
-    hot: true
-  }
+    hot: true,
+  },
   // Dist folder will be used to server our app
 };
