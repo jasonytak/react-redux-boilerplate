@@ -2,5 +2,12 @@
   "name": "react-redux-boilerplate",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js",
+  },
+  "devDependencies": {
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
 }
