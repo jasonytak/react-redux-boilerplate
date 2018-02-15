@@ -2,6 +2,19 @@ module.exports = {
   entry: [
     './src/index.js'
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+  // Automically resolve certain extensions so no need to type extensions in import statements
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   // Use entry file as entry point to bundle all imported files
   output: {
     path: __dirname + '/dist',
